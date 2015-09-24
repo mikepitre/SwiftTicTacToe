@@ -22,6 +22,14 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
     
+    @IBOutlet weak var gameOverLabel: UILabel!
+    
+    @IBOutlet weak var playAgainButton: UIButton!
+    
+    @IBAction func playAgainPressed(sender: AnyObject) {
+    }
+    
+    
     
     @IBAction func buttonPressed(sender: AnyObject) {
         
@@ -54,8 +62,24 @@ class ViewController: UIViewController {
             for combination in winningCombinations {
             
                 if gameState[combination[0]] != 0 && gameState[combination[0]] == gameState[combination[1]] && gameState[combination[1]] == gameState[combination[2]] {
-                
-                    print("We have a winner!")
+                    
+                    var labelText = "O Wins!"
+                    
+                    if gameState[combination[0]] == 2 {
+                        
+                        labelText = "X Wins!"
+                    
+                    }
+                    
+                    gameOverLabel.text = labelText
+                        
+                    UIView.animateWithDuration(0.5, animations: { () -> Void in
+                        
+                        self.gameOverLabel.center = CGPointMake(self.gameOverLabel.center.x + 400, self.gameOverLabel.center.y)
+                        
+                        self.playAgainButton.center = CGPointMake(self.playAgainButton.center.x + 400, self.playAgainButton.center.y)
+                        
+                    })
                     
                     gameActive = false
                 
@@ -78,6 +102,17 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        gameOverLabel.center = CGPointMake(gameOverLabel.center.x - 400, gameOverLabel.center.y)
+        
+        playAgainButton.center = CGPointMake(playAgainButton.center.x - 400, playAgainButton.center.y)
+        
+    }
+    
+    
+    
 
 
 }
