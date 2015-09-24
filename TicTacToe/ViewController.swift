@@ -27,6 +27,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     
     @IBAction func playAgainPressed(sender: AnyObject) {
+        
+        activePlayer = 1
+        
+        gameActive = true
+        
+        gameState = [0, 0, 0 , 0, 0, 0, 0, 0, 0]
+        
+        var button : UIButton
+        
+        for var i = 0; i < 9; i++ {
+        
+        button = view.viewWithTag(i) as! UIButton
+        
+        button.setImage(nil, forState: .Normal)
+        
+        }
+        
+        gameOverLabel.hidden = true
+        playAgainButton.hidden = true
+        
+        gameOverLabel.alpha = 0
+        
+        playAgainButton.alpha = 0
+        
     }
     
     
