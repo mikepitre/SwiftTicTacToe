@@ -72,12 +72,15 @@ class ViewController: UIViewController {
                     }
                     
                     gameOverLabel.text = labelText
+                    
+                    gameOverLabel.hidden = false
+                    playAgainButton.hidden = false
                         
                     UIView.animateWithDuration(0.5, animations: { () -> Void in
                         
-                        self.gameOverLabel.center = CGPointMake(self.gameOverLabel.center.x + 400, self.gameOverLabel.center.y)
+                        self.gameOverLabel.alpha = 1
                         
-                        self.playAgainButton.center = CGPointMake(self.playAgainButton.center.x + 400, self.playAgainButton.center.y)
+                        self.playAgainButton.alpha = 1
                         
                     })
                     
@@ -96,6 +99,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        gameOverLabel.hidden = true
+        playAgainButton.hidden = true
+        
+        gameOverLabel.alpha = 0
+        
+        playAgainButton.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,9 +115,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        gameOverLabel.center = CGPointMake(gameOverLabel.center.x - 400, gameOverLabel.center.y)
         
-        playAgainButton.center = CGPointMake(playAgainButton.center.x - 400, playAgainButton.center.y)
         
     }
     
