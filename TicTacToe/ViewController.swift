@@ -9,16 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //1 = Os, 2 = Xs
+    
+    var activePlayer = 1
 
     @IBOutlet weak var button: UIButton!
     
+    
     @IBAction func buttonPressed(sender: AnyObject) {
         
-        var image = UIImage(named: "x.png")
+        var image = UIImage()
+        
+        if activePlayer == 1 {
+          
+            image = UIImage(named: "o.png")!
+            
+            activePlayer = 2
+            
+        } else {
+            
+            if activePlayer == 2 {
+                
+                image = UIImage(named: "x.png")!
+                
+                activePlayer = 1
+                
+            }
+        
+        }
         
         sender.setImage(image, forState: .Normal)
-        
-        print(sender.tag)
         
     }
     
